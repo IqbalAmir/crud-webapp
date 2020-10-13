@@ -3,20 +3,18 @@
 @section('content')
     <div id="wrapper">
         <div id="page" class="container">
-            <h1>Add Stadium</h1>
+            <h1>Update Stadium Details</h1>
 
 
-            <form method="POST" action="/stadium">
+            <form method="POST" action="/stadium/{{$stadium->id}}">
                 @csrf
+                @method('PUT')
+
                 <div class="field">
                     <label class="label" for="name">Name</label>
 
                     <div class="control">
-                        <input class="input" type="text" name="name" id="name" value="{{ old('name') }}">
-
-                        @error('name')
-                        <p>{{$errors->first('name')}}</p>
-                        @enderror
+                        <input class="input" type="text" name="name" id="name" value="{{$stadium->name}}">
                     </div>
                 </div>
 
@@ -26,11 +24,7 @@
 
 
                     <div class="control">
-                        <input class="textarea" name="capacity" id="capacity" value="{{ old('capacity') }}">
-
-                        @error('capacity')
-                            <p>{{$errors->first('capacity')}}</p>
-                        @enderror
+                        <textarea class="textarea" name="capacity" id="capacity">{{$stadium->capacity}}</textarea>
                     </div>
 
                 </div>
@@ -40,11 +34,7 @@
 
 
                     <div class="control">
-                        <input class="textarea" name="body" id="body" value="{{ old('body') }}">
-
-                        @error('body')
-                            <p>{{$errors->first('body')}}</p>
-                        @enderror
+                        <textarea class="textarea" name="body" id="body">{{$stadium->body}}</textarea>
                     </div>
 
                 </div>

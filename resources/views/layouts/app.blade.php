@@ -20,9 +20,7 @@
     <header class="bg-blue-900 py-6">
         <div class="container mx-auto flex justify-between items-center px-6">
             <div>
-                <a href="{{ url('/') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">
-                    {{ config('app.name', 'Laravel') }}
-                    <a href="{{ url('/stadium') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('All Stadiums') }} </a>
+                    <a href="{{ url('/stadium') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('Stadiums') }} </a>
                     <a href="{{ url('/') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('News') }} </a>
                     <a href="{{ url('/contactus') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('Contact Us') }} </a>
                 </a>

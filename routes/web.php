@@ -24,6 +24,11 @@ Route::post('/stadium',[\App\Http\Controllers\StadiumController::class, 'store']
 Route::get('/stadium/create',[\App\Http\Controllers\StadiumController::class, 'create']);
 Route::get('/stadium/{id}',[\App\Http\Controllers\StadiumController::class, 'show']);
 
+Route::get('/stadium/{id}/edit',[\App\Http\Controllers\StadiumController::class, 'edit']);
+Route::put('/stadium/{id}',[\App\Http\Controllers\StadiumController::class, 'update']);
+
+Route::delete('/stadium/{id}',[\App\Http\Controllers\StadiumController::class, 'destroy']);
+
 
 Auth::routes();
 
