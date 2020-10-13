@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('/stadium',[\App\Http\Controllers\StadiumController::class, 'index']);
+Route::post('/stadium',[\App\Http\Controllers\StadiumController::class, 'store']);
+Route::get('/stadium/create',[\App\Http\Controllers\StadiumController::class, 'create']);
+Route::get('/stadium/{id}',[\App\Http\Controllers\StadiumController::class, 'show']);
+
+
+Auth::routes();
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
