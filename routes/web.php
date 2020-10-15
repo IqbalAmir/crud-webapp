@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-
+Route::get('',[\App\Http\Controllers\StadiumController::class, 'index']);
 Route::get('/stadium',[\App\Http\Controllers\StadiumController::class, 'index']);
 Route::post('/stadium',[\App\Http\Controllers\StadiumController::class, 'store']);
 Route::get('/stadium/create',[\App\Http\Controllers\StadiumController::class, 'create']);
