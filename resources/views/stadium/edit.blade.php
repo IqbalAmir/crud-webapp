@@ -6,7 +6,7 @@
             <h1>Update Stadium Details</h1>
 
 
-            <form method="POST" action="/stadium/{{$stadium->id}}">
+            <form method="POST" action="{{$stadium->path()}}">
                 @csrf
                 @method('PUT')
 

@@ -18,16 +18,19 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('',[\App\Http\Controllers\StadiumController::class, 'index']);
-Route::get('/stadium',[\App\Http\Controllers\StadiumController::class, 'index']);
+Route::get('/stadium',[\App\Http\Controllers\StadiumController::class, 'index'])->name('stadium.index');
+
+
 Route::post('/stadium',[\App\Http\Controllers\StadiumController::class, 'store']);
 Route::get('/stadium/create',[\App\Http\Controllers\StadiumController::class, 'create']);
-Route::get('/stadium/{id}',[\App\Http\Controllers\StadiumController::class, 'show']);
+Route::get('/stadium/{stadium}',[\App\Http\Controllers\StadiumController::class, 'show'])->name('stadium.id');
 
-Route::get('/stadium/{id}/edit',[\App\Http\Controllers\StadiumController::class, 'edit']);
-Route::put('/stadium/{id}',[\App\Http\Controllers\StadiumController::class, 'update']);
+Route::get('/stadium/{stadium}/edit',[\App\Http\Controllers\StadiumController::class, 'edit']);
+Route::put('/stadium/{stadium}',[\App\Http\Controllers\StadiumController::class, 'update']);
 
-Route::delete('/stadium/{id}',[\App\Http\Controllers\StadiumController::class, 'destroy']);
+Route::delete('/stadium/{stadium}',[\App\Http\Controllers\StadiumController::class, 'destroy']);
 
 
 Auth::routes();

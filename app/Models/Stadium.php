@@ -17,4 +17,22 @@ class Stadium extends Model
     //timestamps
     public $timestamps = true;
 
+
+    protected $fillable = ['name', 'capacity', 'body'];
+
+
+    public function path()
+    {
+        return route('stadium.id', $this);
+    }
+
+
+
+
+
+
+
+
+
+
 }

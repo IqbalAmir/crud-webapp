@@ -35,7 +35,7 @@
                 @else
                 <!-- Authentication Links -->
                     @auth
-                        <a href="{{ url('/') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('My Tracker') }} </a>
+                        <a href="{{ url('/favourites') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('My Tracker') }} </a>
 
                         <a href="{{ route('logout') }}"
                            class="no-underline hover:underline"

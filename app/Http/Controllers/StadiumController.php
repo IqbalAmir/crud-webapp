@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class StadiumController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('stadium.index', [
@@ -19,100 +15,58 @@ class StadiumController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('stadium.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        $this->validate($request, [
-            'name' => ['required', 'min:3', 'max:255'],
-            'capacity' => 'required',
-            'body' => 'required'
-        ]);
+        Stadium::create($this->validateStadium());
 
-        $stadium = new Stadium();
-        $stadium->name = $request->input('name');
-        $stadium->capacity = $request->input('capacity');
-        $stadium->body = $request->input('body');
-        $stadium->save();
-
-        return redirect('/stadium')->with('success', 'Stadium Created');
+        return redirect(route('stadium.index'));
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Stadium $stadium
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show(Stadium $stadium)
     {
-        $stadium = Stadium::findOrFail($id);
-        return view('stadium.show', ['stadium' => $stadium]);
+
+        return view('stadium.show', compact('stadium'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Stadium $stadium
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit(Stadium $stadium)
     {
-        $stadium = Stadium::findOrFail($id);
-        return view('stadium.edit', ['stadium' => $stadium]);
+
+        return view('stadium.edit', compact('stadium'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Stadium $stadium
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Stadium $stadium)
     {
-        $this->validate($request, [
-            'name' => ['required', 'min:3', 'max:255'],
-            'capacity' => 'required',
-            'body' => 'required'
-        ]);
+        $stadium->update($this->validateStadium());
 
-        $stadium = Stadium::findOrFail($id);
-        $stadium->name = $request->input('name');
-        $stadium->capacity = $request->input('capacity');
-        $stadium->body = $request->input('body');
-        $stadium->save();
-
-        return redirect('/stadium/' . $stadium->id);
+        return redirect($stadium->path());
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Stadium $stadium
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy(Stadium $stadium)
     {
-        $stadium = Stadium::findOrFail($id);
+
         $stadium->delete();
 
-        return redirect('/stadium')->with('success', 'Stadium Deleted');
+        return redirect(route('stadium.index'));
+    }
+
+
+    protected function validateStadium()
+    {
+        return request()->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'capacity' => 'required',
+            'body' => 'required'
+        ]);
     }
 }

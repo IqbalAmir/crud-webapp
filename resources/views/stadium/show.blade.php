@@ -6,8 +6,8 @@
     @yield ('content')
     </body>
 
-    <a href="/stadium/{{$stadium->id}}/edit" class="btn btn-default">Edit</a>
-    <form method="POST" action="/stadium/{{$stadium->id}}">
+    <a href="{{$stadium->path()}}/edit" class="btn btn-default">Edit</a>
+    <form method="POST" action="{{$stadium->path()}}">
         @method ('DELETE')
         @csrf
         <button class="button is-link" type="submit">Delete</button>
