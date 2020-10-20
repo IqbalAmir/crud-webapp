@@ -8,52 +8,7 @@
 
             <form method="POST" action="/stadium">
                 @csrf
-                <div class="field">
-                    <label class="label" for="name">Name</label>
-
-                    <div class="control">
-                        <input class="input" type="text" name="name" id="name" value="{{ old('name') }}">
-
-                        @error('name')
-                        <p>{{$errors->first('name')}}</p>
-                        @enderror
-                    </div>
-                </div>
-
-
-                <div class="field">
-                    <label class="label" for="capacity">Capacity</label>
-
-
-                    <div class="control">
-                        <input class="textarea" name="capacity" id="capacity" value="{{ old('capacity') }}">
-
-                        @error('capacity')
-                            <p>{{$errors->first('capacity')}}</p>
-                        @enderror
-                    </div>
-
-                </div>
-
-                <div class="field">
-                    <label class="label" for="body">Body</label>
-
-
-                    <div class="control">
-                        <input class="textarea" name="body" id="body" value="{{ old('body') }}">
-
-                        @error('body')
-                            <p>{{$errors->first('body')}}</p>
-                        @enderror
-                    </div>
-
-                </div>
-
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link" type="submit">Submit</button>
-                    </div>
-                </div>
+                @include('partials._form')
 
             </form>
 

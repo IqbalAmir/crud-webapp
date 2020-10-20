@@ -2,11 +2,10 @@
 
 @section('content')
 
-    <body>
-    @yield ('content')
-    </body>
 
     <a href="{{$stadium->path()}}/edit" class="btn btn-default">Edit</a>
+
+
     <form method="POST" action="{{$stadium->path()}}">
         @method ('DELETE')
         @csrf

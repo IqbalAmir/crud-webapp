@@ -10,23 +10,23 @@ class StadiumController extends Controller
 
     public function index()
     {
-        return view('stadium.index', [
-            'stadiums' => Stadium::latest()->get()
-        ]);
+        return view('stadium.index', ['stadiums' => Stadium::latest()->get()]);
     }
+
 
     public function create()
     {
         return view('stadium.create');
     }
 
+
     public function store()
     {
-        Stadium::create($this->validateStadium());
 
-        return redirect(route('stadium.index'));
+        return redirect(route('stadium.index', [Stadium::create($this->validateStadium())] ));
 
     }
+
 
 
     public function show(Stadium $stadium)
@@ -36,11 +36,13 @@ class StadiumController extends Controller
     }
 
 
+
     public function edit(Stadium $stadium)
     {
 
         return view('stadium.edit', compact('stadium'));
     }
+
 
 
     public function update(Stadium $stadium)
@@ -52,13 +54,15 @@ class StadiumController extends Controller
     }
 
 
+
     public function destroy(Stadium $stadium)
     {
 
-        $stadium->delete();
 
-        return redirect(route('stadium.index'));
+        return redirect(route('stadium.index', $stadium->delete()));
     }
+
+
 
 
     protected function validateStadium()

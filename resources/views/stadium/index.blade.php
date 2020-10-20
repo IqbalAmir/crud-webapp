@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <body>
-    @yield ('content')
-    </body>
+    {{--<body>--}}
+    {{--@yield ('content')--}}
+    {{--</body>--}}
 
 
 
