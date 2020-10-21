@@ -3,26 +3,17 @@
 @section('content')
 
 
-    <a href="{{$stadium->path()}}/edit" class="btn btn-default">Edit</a>
 
 
     <form method="POST" action="{{$stadium->path()}}">
-        @method ('DELETE')
-        @csrf
-        <button class="button is-link" type="submit">Delete</button>
+        @method ('DELETE')        @csrf
+        <button class=" shadow bg-red-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-xl font-bold py-2 px-12 " type="submit">
+           DELETE
+        </button>
     </form>
 
-    <h1 class="py-10 font-sans">{{$stadium->name}}</h1>
+    @include('partials._displayinfo')
 
-    <h1 class="py-10 font-sans">{{$stadium->capacity}}</h1>
-
-
-    <p class="py-10">
-        {{$stadium->body}}
-    </p>
-
-
-
-
+    <a href="{{$stadium->path()}}/edit" class=" shadow bg-red-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-xl font-bold py-1 px-16 ">EDIT</a>
 @endsection
 

@@ -20,21 +20,19 @@
     <header class="bg-blue-900 py-6">
         <div class="container mx-auto flex justify-between items-center px-6">
             <div>
-                    <a href="{{ url('/stadium') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('Stadiums') }} </a>
-                    <a href="{{ url('/') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('News') }} </a>
+                    <a href="{{ url('/stadium') }}" class="text-4xl  no-underline  inline-block py-2 px-4 text-red-500 hover:text-purple-400 font-semibold ">{{ __('Stadiums') }} </a>
+                    <a href="{{ route('stadium.create') }}" class="text-4xl  no-underline  inline-block py-2 px-4 text-red-500 hover:text-purple-400 font-semibold ">{{ __('Add Stadium') }} </a>
       </div>
 
             <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
                 @guest
-                    <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @if (Route::has('register'))
-                        <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold " href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endif
                 @else
                 <!-- Authentication Links -->
                     @auth
-                        <a href="{{ url('/favourites') }}" class="text-2xl  no-underline  inline-block py-2 px-4 text-orange-500 hover:text-blue-800 font-semibold ">{{ __('My Tracker') }} </a>
-
                         <a href="{{ route('logout') }}"
                            class="no-underline hover:underline"
                            onclick="event.preventDefault();

@@ -2,13 +2,6 @@
 
 @section('content')
 
-    {{--<body>--}}
-    {{--@yield ('content')--}}
-    {{--</body>--}}
-
-
-
-
 
     <div class="container mx-auto flex items-center flex-wrap pt-10 pb-12">
         @foreach ($stadiums as $stadium)
@@ -16,7 +9,7 @@
 
 
 
-                <div class="hover:grow hover:shadow-lg ">
+                <div class="hover:grow text-orange-500 hover:text-purple-400 font-semibold ">
                     <div class="pt-8 flex items-center justify-between lg:text-2xl">
                         <a href="{{$stadium->path()}}">
                             {{$stadium->name}}

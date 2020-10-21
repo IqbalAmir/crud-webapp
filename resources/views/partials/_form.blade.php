@@ -1,46 +1,51 @@
-<div class="field">
-    <label class="label" for="name">Name</label>
-
-    <div class="control">
-        <input class="input" type="text" name="name" id="name" value="{{ old('name') ?? $stadium->name ?? '' }}">
-
-        @error('name')
-        <p>{{$errors->first('name')}}</p>
-        @enderror
-    </div>
-</div>
+<form class=" w-full max-w-lg">
 
 
 
-<div class="field">
-    <label class="label" for="capacity">Capacity</label>
+        <div class=" flex items-center  pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
+            <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid--name">
+                Stadium Name
+            </label>
+
+            <input class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  name="name" id="name" value="{{old('name') ?? $stadium->name ?? ''}}">
+
+            @error('name')
+            <p class="text-red-500 text-xs italic">Please fill out this field.{{$errors->first('name')}}</p>
+            @enderror
+
+        </div>
 
 
-    <div class="control">
-        <input class="input" name="capacity" id="capacity" value="{{old('capacity') ?? $stadium->capacity ?? ''}}">
 
-        @error('name')
-        <p>{{$errors->first('capacity')}}</p>
-        @enderror
-    </div>
-</div>
+        <div class="flex items-center pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
+            <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-capacity">
+                Stadium Capacity
+            </label>
+
+            <input class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  name="capacity" id="capacity" value="{{old('capacity') ?? $stadium->capacity ?? ''}}">
+
+            @error('capacity')
+            <p class="text-red-500 text-xs italic">Please fill out this field.{{$errors->first('capacity')}}</p>
+            @enderror
+
+        </div>
 
 
-<div class="field">
-    <label class="label" for="body">Body</label>
+        <div class="  pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
+            <label class="  block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-body">
+                Stadium Information
+            </label>
+
+            <input class="appearance-none block w-full  bg-gray-200 text-gray-700 border border-red-500 rounded py-12 px-16 mb-12 leading-6 focus:outline-none focus:bg-white"  name="body" id="body" value="{{old('body') ?? $stadium->body ?? ''}}">
+
+            @error('body')
+            <p class="text-red-500 text-xs italic">Please fill out this field.{{$errors->first('body')}}</p>
+            @enderror
+
+        </div>
 
 
-    <div class="control">
-        <input class="input" name="body" id="capacity" value="{{old('body') ?? $stadium->body ?? ''}}">
-
-        @error('name')
-        <p>{{$errors->first('body')}}</p>
-        @enderror
-    </div>
-</div>
-
-<div class="field is-grouped">
-    <div class="control">
-        <button class="button is-link" type="submit">Submit</button>
-    </div>
-</div>
+    <button class="  md:w-1/2 shadow bg-red-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-xl font-bold py-2 px-12 " type="submit">
+        Submit
+    </button>
+</form>
