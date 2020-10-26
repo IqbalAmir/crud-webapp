@@ -4,6 +4,7 @@
 
 
     <div class="container mx-auto flex items-center flex-wrap pt-10 pb-12">
+        @if(!Auth::guest())
         @foreach ($stadiums as $stadium)
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
 
@@ -19,12 +20,8 @@
                 </div>
 
             </div>
-        @endforeach
-
-
-
-
-
+    @endforeach
+        @endif
 
     </div>
 

@@ -10,7 +10,7 @@
             <input class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  name="name" id="name" value="{{old('name') ?? $stadium->name ?? ''}}">
 
             @error('name')
-            <p class="text-red-500 text-xs italic">Please fill out this field.{{$errors->first('name')}}</p>
+            <p class="text-red-500 text-lg italic">{{$errors->first('name')}}</p>
             @enderror
 
         </div>
@@ -25,7 +25,7 @@
             <input class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  name="capacity" id="capacity" value="{{old('capacity') ?? $stadium->capacity ?? ''}}">
 
             @error('capacity')
-            <p class="text-red-500 text-xs italic">Please fill out this field.{{$errors->first('capacity')}}</p>
+            <p class="text-red-500 text-lg italic">{{$errors->first('capacity')}}</p>
             @enderror
 
         </div>
@@ -39,7 +39,7 @@
             <input class="appearance-none block w-full  bg-gray-200 text-gray-700 border border-red-500 rounded py-12 px-16 mb-12 leading-6 focus:outline-none focus:bg-white"  name="body" id="body" value="{{old('body') ?? $stadium->body ?? ''}}">
 
             @error('body')
-            <p class="text-red-500 text-xs italic">Please fill out this field.{{$errors->first('body')}}</p>
+            <p class="text-red-500 text-lg italic">{{$errors->first('body')}}</p>
             @enderror
 
         </div>

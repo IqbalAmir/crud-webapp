@@ -18,7 +18,7 @@ class Stadium extends Model
     public $timestamps = true;
 
 
-    protected $fillable = ['name', 'capacity', 'body'];
+    protected $fillable = ['name', 'capacity', 'body', 'user_id'];
 
 
     public function path()
@@ -27,6 +27,10 @@ class Stadium extends Model
     }
 
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 
 

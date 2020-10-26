@@ -13,14 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
+Auth::routes();
+
+Route::middleware ('auth') -> group (function () {
 
 Route::get('',[\App\Http\Controllers\StadiumController::class, 'index']);
 Route::get('/stadium',[\App\Http\Controllers\StadiumController::class, 'index'])->name('stadium.index');
+
+
 
 
 Route::post('/stadium',[\App\Http\Controllers\StadiumController::class, 'store']);
@@ -33,7 +35,5 @@ Route::put('/stadium/{stadium}',[\App\Http\Controllers\StadiumController::class,
 Route::delete('/stadium/{stadium}',[\App\Http\Controllers\StadiumController::class, 'destroy']);
 
 
-Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+});

@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Stadium;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 
 class StadiumFactory extends Factory
 {
@@ -28,6 +30,7 @@ class StadiumFactory extends Factory
         ];
 
         return [
+            'user_id'=> User::factory(),
             'name' => $stadiums [array_rand ($stadiums)],
             'capacity' => $this->faker->unique()->randomNumber($nbDigits = 5),
             'body' => $this->faker->paragraph,

@@ -42,4 +42,8 @@ class User extends Authenticatable
     ];
 
 
+    public function stadiums(){
+        return $this->hasMany(Stadium::class);
+    }
+
 }
