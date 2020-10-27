@@ -21,6 +21,7 @@
                class=" shadow bg-red-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-xl font-bold py-1 px-12 ">EDIT</a>
 
         </div>
+
     @endcan
 
 

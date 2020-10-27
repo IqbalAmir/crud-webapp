@@ -2,7 +2,12 @@
 
 @section('content')
 
+
 @include('partials._displayhome')
+
+
+
+
 
 
 @endsection

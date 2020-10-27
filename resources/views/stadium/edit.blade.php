@@ -20,7 +20,15 @@
 
         </div>
 
+        @else
+
+        <div class="h-screen w-screen bg-purple-600 flex justify-center content-center flex-wrap">
+            <p class="font-sans text-white error-text">404</p>
+        </div>
+
         @endcan
+
+
 
 @endsection
 

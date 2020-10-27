@@ -15,6 +15,7 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
 <div id="app">
     <header class="bg-blue-900 py-6">
@@ -24,7 +25,7 @@
                     <a href="{{ route('stadium.create') }}" class="text-4xl  no-underline  inline-block py-2 px-4 text-red-500 hover:text-purple-400 font-semibold ">{{ __('Add Stadium') }} </a>
       </div>
 
-            <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
+            <nav class="lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-1">
                 @guest
                     <a class="no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @if (Route::has('register'))
@@ -33,9 +34,10 @@
                 @else
                 <!-- Authentication Links -->
                     @auth
-                        <a href="{{ route('home') }}" class="text-4xl  no-underline  inline-block py-2 px-4 text-red-500 hover:text-purple-400 font-semibold ">{{ __('My Stadiums') }} </a>
+                        <a href="{{ route('home') }}" class="text-4xl  no-underline  inline-block py-2 px-4 hover:text-purple-400 font-semibold ">{{ __('My Stadiums') }} </a>
                         <a href="{{ route('logout') }}"
-                           class="no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold"
+
+                           class=" no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold"
                            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
@@ -50,4 +52,8 @@
     @yield('content')
 </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script src='/js/script.js'></script>
+
 </html>

@@ -29,6 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('edit-stadium', function (User $user, Stadium $stadium){
             return $stadium -> user() -> is($user);
+
         });
     }
 }

@@ -54,7 +54,7 @@ class StadiumController extends Controller
 
 
 
-    public function edit(Stadium $stadium)
+public function edit(Stadium $stadium)
     {
 
         return view('stadium.edit', compact('stadium'));
