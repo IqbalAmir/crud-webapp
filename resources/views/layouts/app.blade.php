@@ -33,6 +33,7 @@
                 @else
                 <!-- Authentication Links -->
                     @auth
+                        <a href="{{ route('home') }}" class="text-4xl  no-underline  inline-block py-2 px-4 text-red-500 hover:text-purple-400 font-semibold ">{{ __('My Stadiums') }} </a>
                         <a href="{{ route('logout') }}"
                            class="no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold"
                            onclick="event.preventDefault();

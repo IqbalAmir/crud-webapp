@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stadium;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,11 +11,10 @@ class StadiumController extends Controller
 
 
 
+
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        return view('stadium.index')->with('stadiums', $user->stadiums);
+        return view('stadium.index', ['stadiums' => Stadium::latest()->get()]);
     }
 
 
@@ -26,15 +24,21 @@ class StadiumController extends Controller
     }
 
 
-    public function store()
+    public function store(Request $request)
     {
-        Stadium::create([
-
-            'name' => request('name'),
-            'capacity' => request('capacity'),
-            'body' => request('body'),
-            'user_id' => auth()->id()
+        $this->validate($request, [
+            'name' => ['required', 'min:3', 'max:255'],
+            'capacity' => 'required',
+            'body' => 'required'
         ]);
+
+        $stadium = new Stadium();
+        $stadium->name = $request->input('name');
+        $stadium->capacity = $request->input('capacity');
+        $stadium->body = $request->input('body');
+        $stadium->user_id = auth()->user()->id;
+        $stadium->save();
+
         return redirect(route('stadium.index'));
 
 

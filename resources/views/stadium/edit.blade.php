@@ -3,7 +3,7 @@
 @section('content')
 
 
-
+    @can('edit-stadium', $stadium)
 
         <div id="page" class="container">
 
@@ -20,6 +20,7 @@
 
         </div>
 
+        @endcan
 
 @endsection
 

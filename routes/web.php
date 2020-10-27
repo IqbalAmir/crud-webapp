@@ -13,19 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('',[\App\Http\Controllers\StadiumController::class, 'index']);
+Route::get('/stadium',[\App\Http\Controllers\StadiumController::class, 'index'])->name('stadium.index');
 
 Auth::routes();
 
 Route::middleware ('auth') -> group (function () {
 
-Route::get('',[\App\Http\Controllers\StadiumController::class, 'index']);
-Route::get('/stadium',[\App\Http\Controllers\StadiumController::class, 'index'])->name('stadium.index');
 
 
 
 
-Route::post('/stadium',[\App\Http\Controllers\StadiumController::class, 'store']);
+    Route::post('/stadium',[\App\Http\Controllers\StadiumController::class, 'store']);
 Route::get('/stadium/create',[\App\Http\Controllers\StadiumController::class, 'create'])->name('stadium.create');
 Route::get('/stadium/{stadium}',[\App\Http\Controllers\StadiumController::class, 'show'])->name('stadium.id');
 
@@ -35,5 +34,7 @@ Route::put('/stadium/{stadium}',[\App\Http\Controllers\StadiumController::class,
 Route::delete('/stadium/{stadium}',[\App\Http\Controllers\StadiumController::class, 'destroy']);
 
 
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 });
