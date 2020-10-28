@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +13,13 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+
 </head>
 
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
@@ -27,19 +33,19 @@
 
             <nav class="lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-1">
                 @guest
-                    <a class="no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="fas fa-sign-in-alt fa-2x px-3 text-red-500 hover:text-purple-400" href="{{ route('login') }}"></a>
                     @if (Route::has('register'))
-                        <a class="no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold " href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class=" fas fa-user-plus fa-2x text-red-500 hover:text-purple-400 " href="{{ route('register') }}"></a>
                     @endif
                 @else
                 <!-- Authentication Links -->
                     @auth
-                        <a href="{{ route('home') }}" class="text-4xl  no-underline  inline-block py-2 px-4 hover:text-purple-400 font-semibold ">{{ __('My Stadiums') }} </a>
+                        <a href="{{ route('home') }}" class="text-3xl text-lg-right text-red-500  no-underline  inline-block py-2 px-4 hover:text-purple-400 font-semibold ">{{ __('My Stadiums') }} </a>
                         <a href="{{ route('logout') }}"
 
-                           class=" no-underline hover:underline text-red-500 hover:text-purple-400 font-semibold"
+                           class="fas fa-sign-out-alt fa-2x text-red-500 hover:text-purple-400"
                            onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                document.getElementById('logout-form').submit();"></a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                             {{ csrf_field() }}
                         </form>
@@ -56,4 +62,7 @@
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <script src='/js/script.js'></script>
 
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </html>
+
+

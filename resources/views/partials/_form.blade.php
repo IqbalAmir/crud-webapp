@@ -1,3 +1,5 @@
+<x-back-button />
+
 <form class=" w-full max-w-lg">
 
 
@@ -22,7 +24,7 @@
                 Stadium Capacity
             </label>
 
-            <input class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  name="capacity" id="capacity" value="{{old('capacity') ?? $stadium->capacity ?? ''}}">
+            <input class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" name="capacity" id="capacity" value="{{old('capacity') ?? $stadium->capacity ?? ''}}">
 
             @error('capacity')
             <p class="text-red-500 text-lg italic">{{$errors->first('capacity')}}</p>
@@ -36,7 +38,7 @@
                 Stadium Information
             </label>
 
-            <input class="appearance-none block w-full  bg-gray-200 text-gray-700 border border-red-500 rounded py-12 px-16 mb-12 leading-6 focus:outline-none focus:bg-white"  name="body" id="body" value="{{old('body') ?? $stadium->body ?? ''}}">
+            <textarea class="appearance-none block w-full  bg-gray-200 text-gray-700 border border-red-500 rounded py-10 px-16 mb-12  focus:outline-none focus:bg-white"  name="body" id="body"> {{old('body') ?? $stadium->body ?? ''}}</textarea>
 
             @error('body')
             <p class="text-red-500 text-lg italic">{{$errors->first('body')}}</p>

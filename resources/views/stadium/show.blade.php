@@ -2,25 +2,23 @@
 
 @section('content')
 
+  <x-back-button />
+
+    @include('partials._displayinfo')
 
 
 
     @can('edit-stadium', $stadium)
+
+        <a href="{{$stadium->path()}}/edit"><i class="fas fa-edit text-red-500 hover:text-purple-400 fa-3x px-3 "></i></a>
+
         <form method="POST" action="{{$stadium->path()}}">
             @method ('DELETE')        @csrf
             <button
-                class=" shadow bg-red-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-xl font-bold py-2 px-9 "
+                class="fas fa-trash-alt fa-3x text-red-500 hover:text-purple-400 px-3 py-3"
                 type="submit">
-                DELETE
             </button>
         </form>
-
-
-        <div class=" lg:py-6 text-left">
-            <a href="{{$stadium->path()}}/edit"
-               class=" shadow bg-red-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-xl font-bold py-1 px-12 ">EDIT</a>
-
-        </div>
 
     @endcan
 
@@ -28,7 +26,7 @@
 
 
 
-    @include('partials._displayinfo')
+
 
 @endsection
 
