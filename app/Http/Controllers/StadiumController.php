@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stadium;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class StadiumController extends Controller
 {
-
-
 
 
     public function index()
@@ -18,26 +17,18 @@ class StadiumController extends Controller
     }
 
 
+
     public function create()
     {
         return view('stadium.create');
     }
 
 
+
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => ['required', 'min:3', 'max:255'],
-            'capacity' => 'required',
-            'body' => 'required'
-        ]);
 
-        $stadium = new Stadium();
-        $stadium->name = $request->input('name');
-        $stadium->capacity = $request->input('capacity');
-        $stadium->body = $request->input('body');
-        $stadium->user_id = auth()->user()->id;
-        $stadium->save();
+        $request->user()->stadiums()->create($this->validateStadium());
 
         return redirect(route('stadium.index'));
 
@@ -54,11 +45,13 @@ class StadiumController extends Controller
 
 
 
-public function edit(Stadium $stadium)
+
+    public function edit(Stadium $stadium)
     {
 
         return view('stadium.edit', compact('stadium'));
     }
+
 
 
 
@@ -69,6 +62,7 @@ public function edit(Stadium $stadium)
         return redirect($stadium->path());
 
     }
+
 
 
 

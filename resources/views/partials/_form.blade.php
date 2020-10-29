@@ -24,7 +24,7 @@
                 Stadium Capacity
             </label>
 
-            <input class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" name="capacity" id="capacity" value="{{old('capacity') ?? $stadium->capacity ?? ''}}">
+            <input class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" max="130000"  name="capacity" id="capacity" value="{{old('capacity') ?? $stadium->capacity ?? ''}}">
 
             @error('capacity')
             <p class="text-red-500 text-lg italic">{{$errors->first('capacity')}}</p>
