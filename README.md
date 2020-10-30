@@ -1,6 +1,7 @@
 # Stadium Tracker
 
-An app which allows users to write reviews about stadiums they have visted.
+An app which allows users to write reviews about stadiums.
+App includes a personal section of a certain user's reviews when logged in.
 The App includes CRUD operations.
 
 
