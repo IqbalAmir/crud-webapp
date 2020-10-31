@@ -9,18 +9,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StadiumFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
+
     protected $model = Stadium::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
+
     public function definition()
     {
         $stadiums = ['Emirates', 'San Paolo Stadium', 'Etihad', 'Old Trafford', 'Anfield',
@@ -30,8 +22,8 @@ class StadiumFactory extends Factory
         ];
 
         return [
-            'user_id'=> User::factory(),
-            'name' => $stadiums [array_rand ($stadiums)],
+            'user_id' => User::factory(),
+            'name' => $stadiums [array_rand($stadiums)],
             'capacity' => $this->faker->unique()->randomNumber($nbDigits = 5),
             'body' => $this->faker->paragraph,
 

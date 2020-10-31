@@ -11,7 +11,7 @@ class Stadium extends Model
 
 
     //table name
-    protected $table ='stadium';
+    protected $table = 'stadium';
     //primary
     public $primaryKey = 'id';
     //timestamps
@@ -31,12 +31,6 @@ class Stadium extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-
-
-
-
-
 
 
 }

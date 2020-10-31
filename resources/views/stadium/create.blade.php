@@ -5,13 +5,13 @@
     <div id="page" class="container">
 
 
-            <form method="POST" action="/stadium">
-                @csrf
-                @include('partials._form')
+        <form method="POST" action="/stadium">
+            @csrf
+            @include('partials._form')
 
-            </form>
+        </form>
 
-        </div>
+    </div>
 
 
 
