@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,21 +19,21 @@ class User extends Authenticatable
         'password',
     ];
 
-
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
 
     public function stadiums()
     {
         return $this->hasMany(Stadium::class);
     }
 
+    public function getAvatarUrlAttribute(){
+        return Gravatar::get($this->email);
+    }
 }

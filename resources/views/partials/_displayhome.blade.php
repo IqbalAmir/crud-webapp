@@ -13,6 +13,7 @@
 
                 </div>
                 <label> Review by {{$stadium->user->name}}</label>
+                <a> <img src="{{$stadium->user->avatar_url}}"></a>
             </div>
         @endforeach
     @else

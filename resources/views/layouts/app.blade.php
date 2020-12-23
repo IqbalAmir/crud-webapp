@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,8 +18,6 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-
 </head>
 
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
@@ -43,12 +40,10 @@
                            href="{{ route('register') }}"></a>
                     @endif
                 @else
-                <!-- Authentication Links -->
                     @auth
                         <a href="{{ route('home') }}"
                            class="text-3xl text-lg-right text-red-500  no-underline  inline-block py-2 px-4 hover:text-purple-400 font-semibold ">{{ __('My Stadiums') }} </a>
                         <a href="{{ route('logout') }}"
-
                            class="fas fa-sign-out-alt fa-2x text-red-500 hover:text-purple-400"
                            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"></a>
@@ -60,15 +55,11 @@
             </nav>
         </div>
     </header>
-
     @yield('content')
 </div>
 </body>
-
-        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-        <script src='/js/script.js'></script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script src='/js/script.js'></script>
 </html>
 
 
