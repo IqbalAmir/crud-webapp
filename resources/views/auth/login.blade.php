@@ -75,6 +75,8 @@
                                         {{ __('Register') }}
                                     </a>
                                 </p>
+                                    <a class="w-full text-xs text-center text-blue-500 hover:text-blue-700 my-6 sm:text-sm sm:my-8"
+                                       href="{{route('github.redirect')}}">Sign In With GitHub</a>
                             @endif
                         </div>
                     </form>
