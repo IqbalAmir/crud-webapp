@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/stadium/create', [\App\Http\Controllers\StadiumController::class, 'create'])->name('stadium.create');
     Route::get('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'show'])->name('stadium.id');
 
-    Route::get('/stadium/{stadium}/edit', [\App\Http\Controllers\StadiumController::class, 'edit']);
+    Route::get('/stadium/{stadium}/edit', [\App\Http\Controllers\StadiumController::class, 'edit'])->middleware('can:edit_form');
     Route::put('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'update']);
 
     Route::delete('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'destroy']);

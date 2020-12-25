@@ -19,9 +19,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('edit-stadium', function (User $user, Stadium $stadium){
-            return $stadium -> user() -> is($user);
+//        Gate::define('edit-stadium', function (User $user, Stadium $stadium){
+//            return $stadium -> user() -> is($user);
 
+        Gate::before(function ($user, $ability){
+            return $user->abilities()->contains($ability);
         });
+
     }
 }

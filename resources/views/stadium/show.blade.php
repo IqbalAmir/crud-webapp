@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    @can('edit-stadium', $stadium)
+    @can('edit_form', $stadium)
         <a href="{{$stadium->path()}}/edit"><i
                 class="fas fa-edit text-red-500 hover:text-purple-400 fa-3x px-3 "></i></a>
 
