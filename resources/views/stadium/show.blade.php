@@ -7,6 +7,7 @@
             <h1 class="font-bold text-red-600 text-6xl my-2 ">{{$stadium->name}}</h1>
             <h1 class="font-weight-normal text-red-600 text-3xl my-4 pt-12"> Capacity of {{$stadium->capacity}} </h1>
             <p class="font-italic text-red-600 text-2xl mb-8 pt-12">{{$stadium->body}}</p>
+            <a> <img src="{{$stadium->user->avatar_url}}"></a>
         </div>
         <div class="w-full lg:w-1/2 lg:py-6 text-center">
             <img src="/images/stadium.jpeg" alt="">

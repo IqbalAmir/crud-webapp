@@ -26,5 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'destroy']);
 
     Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store']);
+    Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'show'])->name('contact');
 
 });

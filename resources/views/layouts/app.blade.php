@@ -12,7 +12,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
@@ -43,6 +42,8 @@
                     @auth
                         <a href="{{ route('home') }}"
                            class="text-3xl text-lg-right text-red-500  no-underline  inline-block py-2 px-4 hover:text-purple-400 font-semibold ">{{ __('My Stadiums') }} </a>
+                        <a href="{{ route('contact') }}"
+                           class="text-3xl text-lg-right text-red-500  no-underline  inline-block py-2 px-4 hover:text-purple-400 font-semibold ">{{ __('Contact Us') }} </a>
                         <a href="{{ route('logout') }}"
                            class="fas fa-sign-out-alt fa-2x text-red-500 hover:text-purple-400"
                            onclick="event.preventDefault();
