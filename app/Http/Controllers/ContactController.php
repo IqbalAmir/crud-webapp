@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact;
+use App\Mail\ContactAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -14,10 +16,10 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        Mail::raw('Thanks for contacting us, we will get back to your query as soon as possible.', function ($message){
-            $message->to(request('email'))
-                ->subject('Hello from Stadium Tracker');
-        });
+        
+
+        Mail::to(request('email'))
+            ->send(new Contact());
 
         if ($file = $request->file('file')){
             $name = $file->getClientOriginalName();
