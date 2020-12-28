@@ -4,7 +4,7 @@
 
     <div id="page" class="container">
 
-        <form method="POST" action="/contact">
+        <form method="POST" action="/contact" enctype="multipart/form-data">
             @csrf
 
             <div class=" flex items-center  pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
@@ -17,42 +17,28 @@
                     type="text" id="email" name="email">
 
                 @error('email')
-                <p class="text-red-500 text-lg italic">{{$message}}</p>
+                <p class="text-red-500 text-lg italic">{{$errors->first('email')}}</p>
                 @enderror
 
             </div>
 
+            <div class="flex items-center pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
+                <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-capacity">
+                    Apply for a role at Stadium Tracker
+                </label>
 
-            {{--<div class=" flex items-center  pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">--}}
-            {{--<label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid--name">--}}
-            {{--Contact Name--}}
-            {{--</label>--}}
-
-            {{--<input--}}
-            {{--class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"--}}
-            {{--type="text" id="email" name="email">--}}
-
-            {{--@error('name')--}}
-            {{--<p class="text-red-500 text-lg italic">{{$errors->first('name')}}</p>--}}
-            {{--@enderror--}}
-
-            {{--</div>--}}
+                <div class="flex items-center pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
+                    <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+                        <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                        </svg>
+                        <span class="mt-2 text-base leading-normal">Upload CV</span>
+                        <input type='file' name="file" class="hidden" />
+                    </label>
+                </div>
 
 
-            {{--<div class=" flex items-center  pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">--}}
-            {{--<label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid--name">--}}
-            {{--Contact Name--}}
-            {{--</label>--}}
-
-            {{--<input--}}
-            {{--class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"--}}
-            {{--type="text" id="email" name="email">--}}
-
-            {{--@error('name')--}}
-            {{--<p class="text-red-500 text-lg italic">{{$errors->first('name')}}</p>--}}
-            {{--@enderror--}}
-
-            {{--</div>--}}
+            </div>
 
 
             <button

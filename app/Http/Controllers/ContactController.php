@@ -12,14 +12,18 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        request()->validate(['email' => 'required|email']);
-
-        Mail::raw('It works!', function ($message){
-           $message->to(request('email'))
-               ->subject('Hello There');
+        Mail::raw('Thanks for contacting us, we will get back to your query as soon as possible.', function ($message){
+            $message->to(request('email'))
+                ->subject('Hello from Stadium Tracker');
         });
+
+        if ($file = $request->file('file')){
+            $name = $file->getClientOriginalName();
+            $file->move('files', $name);
+        }
+
 
         return redirect('/contact')
             ->with('message','Email Sent!');

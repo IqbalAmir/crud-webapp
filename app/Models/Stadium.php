@@ -18,7 +18,7 @@ class Stadium extends Model
     public $timestamps = true;
 
 
-    protected $fillable = ['name', 'capacity', 'body', 'user_id'];
+    protected $fillable = ['name', 'capacity', 'body', 'user_id','image'];
 
 
     public function path()

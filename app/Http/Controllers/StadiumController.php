@@ -21,6 +21,7 @@ class StadiumController extends Controller
 
     public function store(Request $request)
     {
+
         $request->user()->stadiums()->create($this->validateStadium());
         return redirect(route('stadium.index'));
     }
