@@ -16,7 +16,7 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        
+
 
         Mail::to(request('email'))
             ->send(new Contact());
