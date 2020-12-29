@@ -15,7 +15,7 @@ Route::get('/auth/github/callback', [\App\Http\Controllers\Auth\GithubController
 
 Route::middleware('auth')->group(function () {
 
-
+    Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index'])->name('shop.index');
 
     Route::post('/stadium', [\App\Http\Controllers\StadiumController::class, 'store']);
     Route::get('/stadium/create', [\App\Http\Controllers\StadiumController::class, 'create'])->name('stadium.create');
