@@ -32,14 +32,9 @@
             <div class="w-3/4 bg-white px-10 py-10">
                 <div class="flex justify-between border-b pb-8">
                     <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-                    <h2 class="font-semibold text-2xl">Items</h2>
                 </div>
                 <div class="flex mt-10 mb-5">
                     <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
-                    <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
-                        Quantity</h3>
-                    <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
-                    <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
                 </div>
                 @foreach (\Cart::getContent() as $item)
                     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
@@ -61,7 +56,7 @@
                         </div>
 
                         <span class="text-center w-1/5 font-semibold text-sm"></span>
-                        <span class="text-center w-1/5 font-semibold text-sm">{{$item->model->presentPrice()}}</span>
+                        <span class="text-left w-1/5 font-semibold text-sm text-left">{{$item->model->presentPrice()}}</span>
                     </div>
 
                 @endforeach
@@ -83,26 +78,13 @@
                 <div class="flex justify-between mt-10 mb-5">
                     <span class="font-semibold text-sm uppercase">Items {{\Cart::getContent()->count()}}</span>
                 </div>
-                <div>
-                    <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
-                    <select class="block p-2 text-gray-600 w-full text-sm">
-                        <option>Standard shipping - $10.00</option>
-                    </select>
-                </div>
-                <div class="py-10">
-                    <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
-                    <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
-                </div>
-                <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Apply</button>
+
                 <div class="border-t mt-8">
                     <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                         <span>Total cost</span>
                         <span>£{{\Cart::getSubTotal()/100}}</span>
                     </div>
-                    <button
-                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
-                        Checkout
-                    </button>
+                    <a href="{{route('checkout.index')}}" class="  px-3 py-3 bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full"> Proceed to Checkout</a>
                 </div>
             </div>
 

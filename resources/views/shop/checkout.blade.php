@@ -1,0 +1,187 @@
+@extends('layouts.app')
+
+@section('content')
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <div class="container mx-auto flex flex-col md:flex-row items-center my-6 md:my-12">
+        <div class="leading-loose">
+            <form action="#" id="payment-form" class="max-w-xl m- p-20 bg-white rounded shadow-xl">
+                <p class="text-gray-800 font-medium">Customer information</p>
+                <div class="">
+                    <label class="block text-sm text-gray-00" for="cus_name">Name</label>
+                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" name="cus_name"
+                           type="text" required="" placeholder="Your Name">
+                </div>
+                <div class="mt-2">
+                    <label class="block text-sm text-gray-600" for="cus_email">Email</label>
+                    <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                           type="text" required="" placeholder="Your Email">
+                </div>
+                <div class="mt-2">
+                    <label class=" block text-sm text-gray-600" for="cus_email">Address</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                           type="text" required="" placeholder="Street">
+                </div>
+                <div class="mt-2">
+                    <label class="hidden text-sm block text-gray-600" for="cus_email">City</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                           type="text" required="" placeholder="City">
+                </div>
+                <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label class="hidden block text-sm text-gray-600" for="cus_email">Country</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                           type="text" required="" placeholder="Country">
+                </div>
+                <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                    <label class="hidden block text-sm text-gray-600" for="cus_email">Zip</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                           type="text" required="" placeholder="Zip">
+                </div>
+                <p class="mt-4 text-gray-800 font-medium">Payment information</p>
+                <div class="mt-2">
+                    <label class="hidden text-sm block text-gray-600" for="cus_email">Name on Card</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                           type="text" required="" placeholder="Name on Card">
+                </div>
+
+
+                    <label for="card-element">
+                        Credit or debit card
+                    </label>
+                    <div id="card-element">
+                        <!-- A Stripe Element will be inserted here. -->
+                    </div>
+
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+
+
+                {{--<div class="inline-block mt-2 w-1/2 pr-1">--}}
+                    {{--<label class="hidden block text-sm text-gray-600" for="cus_email">Expiry</label>--}}
+                    {{--<input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"--}}
+                           {{--type="text" required="" placeholder="MM/DD">--}}
+                {{--</div>--}}
+
+                {{--<div class="inline-block mt-2 -mx-1 pl-1 w-1/2">--}}
+                    {{--<label class="hidden block text-sm text-gray-600" for="cus_email">CVC Code</label>--}}
+                    {{--<input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"--}}
+                           {{--type="text" required="" placeholder="CVC Code">--}}
+                {{--</div>--}}
+                <div class="mt-4">
+                    <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">
+                        Pay</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div id="summary" class="w-1/4 px-8 py-10">
+            <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+            <div class="flex justify-between mt-10 mb-5">
+                <span class="font-semibold text-sm uppercase">Items {{\Cart::getContent()->count()}}</span>
+            </div>
+
+            @foreach (\Cart::getContent() as $item)
+                <div class="border-t mt-8">{{$item->model->name}}</div>
+                <div>{{$item->model->presentPrice()}}</div>
+                <div class="flex justify-between mt-10 mb-5">
+
+                </div>
+            @endforeach
+
+            <div class="border-t mt-8">
+                <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+                    <span>Total</span>
+                    <span>£{{\Cart::getSubTotal()/100}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        (function(){
+            var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+// Create an instance of Elements.
+            var elements = stripe.elements();
+
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+            var style = {
+                base: {
+                    color: '#32325d',
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
+                }
+            };
+
+// Create an instance of the card Element.
+            var card = elements.create('card', {
+                style: style,
+                hidePostalCode: true
+            });
+
+// Add an instance of the card Element into the `card-element` <div>.
+            card.mount('#card-element');
+
+// Handle real-time validation errors from the card Element.
+            card.on('change', function(event) {
+                var displayError = document.getElementById('card-errors');
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            });
+
+// Handle form submission.
+            var form = document.getElementById('payment-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                stripe.createToken(card).then(function(result) {
+                    if (result.error) {
+                        // Inform the user if there was an error.
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+                    } else {
+                        // Send the token to your server.
+                        stripeTokenHandler(result.token);
+                    }
+                });
+            });
+
+
+
+// Submit the form with the token ID.
+            function stripeTokenHandler(token) {
+                // Insert the token ID into the form so it gets submitted to the server
+                var form = document.getElementById('payment-form');
+                var hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'stripeToken');
+                hiddenInput.setAttribute('value', token.id);
+                form.appendChild(hiddenInput);
+
+                // Submit the form
+                form.submit();
+            }
+        })();
+    </script>
+
+
+@endsection

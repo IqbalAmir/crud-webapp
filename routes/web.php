@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
     Route::delete('/cart/{product}', [\App\Http\Controllers\CartController::class, 'destroy'])->name('cart.destroy');
 
+    Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout.index');
+
     Route::get('empty', function(){
         \Cart::clear();
     });
