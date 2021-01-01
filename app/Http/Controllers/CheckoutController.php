@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\Product;
-use Cart;
 
-class CartController extends Controller
+use Illuminate\Http\Request;
+
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('shop.cart');
+        //
     }
 
     /**
@@ -35,17 +34,15 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-
-        \Cart::add($request->id, $request->name, 1, $request->price)
-            ->associate('App\Models\Product');
-
-        return redirect()->route('cart.index')->with('success_message', 'Item was added to your cart');
-
+        //
     }
 
-
-
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         //
@@ -82,9 +79,6 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        \Cart::remove($id);
-
-        return back()->with('success_message', 'Item removed');
-
+        //
     }
 }

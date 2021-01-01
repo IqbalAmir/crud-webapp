@@ -21,9 +21,6 @@
 
         @if (\Cart::getTotalQuantity() > 0 )
 
-
-            <h3 class="text-gray-700 text-2xl font-medium">Checkout</h3>
-
         @else
             <h1>No Items in Basket</h1>
         @endif
@@ -53,7 +50,13 @@
                             <div class="flex flex-col justify-between ml-4 flex-grow">
                                 <span class="font-bold text-sm">{{$item->model->name}}</span>
                                 <span class="text-red-500 text-xs">{{$item->model->slug}}</span>
-                                <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                                <form method="POST" action="{{route('cart.destroy', $item->model->id)}}">
+                                    @method ('DELETE')        @csrf
+                                    <button type="submit"
+                                            class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove
+                                    </button>
+
+                                </form>
                             </div>
                         </div>
 
@@ -78,8 +81,7 @@
             <div id="summary" class="w-1/4 px-8 py-10">
                 <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
                 <div class="flex justify-between mt-10 mb-5">
-                    <span class="font-semibold text-sm uppercase">Items 3</span>
-                    <span class="font-semibold text-sm">590$</span>
+                    <span class="font-semibold text-sm uppercase">Items {{\Cart::getContent()->count()}}</span>
                 </div>
                 <div>
                     <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
@@ -95,7 +97,7 @@
                 <div class="border-t mt-8">
                     <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                         <span>Total cost</span>
-                        <span>$600</span>
+                        <span>£{{\Cart::getSubTotal()/100}}</span>
                     </div>
                     <button
                         class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
