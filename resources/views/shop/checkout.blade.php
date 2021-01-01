@@ -4,9 +4,21 @@
 
     <script src="https://js.stripe.com/v3/"></script>
 
+    @if(count($errors) > 0)
+        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">ERROR</div>
+        <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{!! $error !!}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="container mx-auto flex flex-col md:flex-row items-center my-6 md:my-12">
         <div class="leading-loose">
-            <form action="#" id="payment-form" class="max-w-xl m- p-20 bg-white rounded shadow-xl">
+            <form action="{{route('checkout.store')}}" method="POST" id="payment-form" class="max-w-xl m- p-20 bg-white rounded shadow-xl">
+                @csrf
                 <p class="text-gray-800 font-medium">Customer information</p>
                 <div class="">
                     <label class="block text-sm text-gray-00" for="cus_name">Name</label>
@@ -56,18 +68,6 @@
                     <!-- Used to display form errors. -->
                     <div id="card-errors" role="alert"></div>
 
-
-                {{--<div class="inline-block mt-2 w-1/2 pr-1">--}}
-                    {{--<label class="hidden block text-sm text-gray-600" for="cus_email">Expiry</label>--}}
-                    {{--<input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"--}}
-                           {{--type="text" required="" placeholder="MM/DD">--}}
-                {{--</div>--}}
-
-                {{--<div class="inline-block mt-2 -mx-1 pl-1 w-1/2">--}}
-                    {{--<label class="hidden block text-sm text-gray-600" for="cus_email">CVC Code</label>--}}
-                    {{--<input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"--}}
-                           {{--type="text" required="" placeholder="CVC Code">--}}
-                {{--</div>--}}
                 <div class="mt-4">
                     <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">
                         Pay</button>
@@ -106,7 +106,7 @@
 
     <script>
         (function(){
-            var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+            var stripe = Stripe('pk_test_51I4szSG22eGQXUs0W3xPaXH63O4Z0s94t2MuXVnDpgltfKJHFgSEy4R3wmO62LpuQaSmyigaiSVLICZ2dSzZDJwa00C0ncU1TD');
 
 // Create an instance of Elements.
             var elements = stripe.elements();
