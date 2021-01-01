@@ -17,6 +17,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index'])->name('shop.index');
 
+    Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
+
+    Route::get('empty', function(){
+        \Cart::clear();
+    });
+
     Route::post('/stadium', [\App\Http\Controllers\StadiumController::class, 'store']);
     Route::get('/stadium/create', [\App\Http\Controllers\StadiumController::class, 'create'])->name('stadium.create');
     Route::get('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'show'])->name('stadium.id');
