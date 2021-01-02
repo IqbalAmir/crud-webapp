@@ -19,7 +19,8 @@
             </div>
         @endforeach
     @else
-        <h1 class="text-red-500 text-2xl text-lg-center py-6 ">No Stadiums Found</h1>
+        <h1 class=" w-full border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">No Stadiums
+            Found</h1>
     @endif
 </div>
 

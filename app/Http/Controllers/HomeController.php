@@ -14,7 +14,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-
     public function index()
     {
         $user_id = auth()->user()->id;

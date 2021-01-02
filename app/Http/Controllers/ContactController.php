@@ -16,8 +16,6 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-
-
         Mail::to(request('email'))
             ->send(new Contact());
 
@@ -25,7 +23,6 @@ class ContactController extends Controller
             $name = $file->getClientOriginalName();
             $file->move('files', $name);
         }
-
 
         return redirect('/contact')
             ->with('message','Email Sent!');

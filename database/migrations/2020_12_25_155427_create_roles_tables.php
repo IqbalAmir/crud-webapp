@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateRolesTables extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
@@ -64,11 +60,6 @@ class CreateRolesTables extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
 

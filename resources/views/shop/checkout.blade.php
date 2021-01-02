@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
     <script src="https://js.stripe.com/v3/"></script>
-
     @if(count($errors) > 0)
-        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">ERROR</div>
+        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2"></div>
         <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -14,10 +12,15 @@
             </ul>
         </div>
     @endif
-
+    @if(session()->has('success_message'))
+        <div class="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+            {{ session()->get('success_message') }}
+        </div>
+    @endif
     <div class="container mx-auto flex flex-col md:flex-row items-center my-6 md:my-12">
         <div class="leading-loose">
-            <form action="{{route('checkout.store')}}" method="POST" id="payment-form" class="max-w-xl m- p-20 bg-white rounded shadow-xl">
+            <form action="{{route('checkout.store')}}" method="POST" id="payment-form"
+                  class="max-w-xl m- p-20 bg-white rounded shadow-xl">
                 @csrf
                 <p class="text-gray-800 font-medium">Customer information</p>
                 <div class="">
@@ -56,25 +59,20 @@
                     <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
                            type="text" required="" placeholder="Name on Card">
                 </div>
+                <label for="card-element">
+                    Credit or debit card
+                </label>
+                <div id="card-element">
+                </div>
 
-
-                    <label for="card-element">
-                        Credit or debit card
-                    </label>
-                    <div id="card-element">
-                        <!-- A Stripe Element will be inserted here. -->
-                    </div>
-
-                    <!-- Used to display form errors. -->
-                    <div id="card-errors" role="alert"></div>
-
+                <div id="card-errors" role="alert"></div>
                 <div class="mt-4">
                     <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">
-                        Pay</button>
+                        Pay
+                    </button>
                 </div>
             </form>
         </div>
-
 
         <div id="summary" class="w-1/4 px-8 py-10">
             <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
@@ -98,21 +96,16 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
+    <footer class="bg-gray-200">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gray-500 hover:text-gray-400">Stadium Tracker</a>
+            <p class="py-2 text-gray-500 sm:py-0">All rights reserved</p>
+        </div>
+    </footer>
     <script>
-        (function(){
+        (function () {
             var stripe = Stripe('pk_test_51I4szSG22eGQXUs0W3xPaXH63O4Z0s94t2MuXVnDpgltfKJHFgSEy4R3wmO62LpuQaSmyigaiSVLICZ2dSzZDJwa00C0ncU1TD');
-
-// Create an instance of Elements.
             var elements = stripe.elements();
-
-// Custom styling can be passed to options when creating an Element.
-// (Note that this demo uses a wider set of styles than the guide below.)
             var style = {
                 base: {
                     color: '#32325d',
@@ -128,18 +121,14 @@
                     iconColor: '#fa755a'
                 }
             };
-
-// Create an instance of the card Element.
             var card = elements.create('card', {
                 style: style,
                 hidePostalCode: true
             });
 
-// Add an instance of the card Element into the `card-element` <div>.
             card.mount('#card-element');
 
-// Handle real-time validation errors from the card Element.
-            card.on('change', function(event) {
+            card.on('change', function (event) {
                 var displayError = document.getElementById('card-errors');
                 if (event.error) {
                     displayError.textContent = event.error.message;
@@ -148,40 +137,29 @@
                 }
             });
 
-// Handle form submission.
             var form = document.getElementById('payment-form');
-            form.addEventListener('submit', function(event) {
+            form.addEventListener('submit', function (event) {
                 event.preventDefault();
 
-                stripe.createToken(card).then(function(result) {
+                stripe.createToken(card).then(function (result) {
                     if (result.error) {
-                        // Inform the user if there was an error.
                         var errorElement = document.getElementById('card-errors');
                         errorElement.textContent = result.error.message;
                     } else {
-                        // Send the token to your server.
                         stripeTokenHandler(result.token);
                     }
                 });
             });
 
-
-
-// Submit the form with the token ID.
             function stripeTokenHandler(token) {
-                // Insert the token ID into the form so it gets submitted to the server
                 var form = document.getElementById('payment-form');
                 var hiddenInput = document.createElement('input');
                 hiddenInput.setAttribute('type', 'hidden');
                 hiddenInput.setAttribute('name', 'stripeToken');
                 hiddenInput.setAttribute('value', token.id);
                 form.appendChild(hiddenInput);
-
-                // Submit the form
                 form.submit();
             }
         })();
     </script>
-
-
 @endsection

@@ -12,6 +12,11 @@ class ShopController extends Controller
         return view('shop.index', ['products' => Product::latest()->get()]);
     }
 
+    public function searchProduct()
+    {
+        $search_product = $_GET['query'];
+        $products = Product::where('name','LIKE','%'.$search_product.'%')->get();
 
-
+        return view('shop.index', compact('products'));
+    }
 }

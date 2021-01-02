@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <form action="{{url('/search')}}">
         <div class="p-8">
             <div class="bg-white flex rounded-full shadow-xl">
@@ -16,8 +15,6 @@
             </div>
         </div>
     </form>
-
     @include('partials._displayhome')
-
 @endsection
 

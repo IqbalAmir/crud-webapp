@@ -16,6 +16,7 @@ Route::get('/auth/github/callback', [\App\Http\Controllers\Auth\GithubController
 Route::middleware('auth')->group(function () {
 
     Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index'])->name('shop.index');
+    Route::get('/searchproduct', [\App\Http\Controllers\ShopController::class, 'searchProduct']);
 
     Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
     Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
