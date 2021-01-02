@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    @can('edit_form', $stadium)
+    @can('manage_reviews', $stadium)
         <a href="{{$stadium->path()}}/edit"><i
                 class="fas fa-edit text-red-500 hover:text-purple-400 fa-3x px-3 "></i></a>
         <form method="POST" action="{{$stadium->path()}}">

@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-//        $this->call(ProductsTableSeeder::class);
-        $this->call(StadiumSeeder::class);
+       // $this->call(ProductsTableSeeder::class);
+       $this->call(StadiumSeeder::class);
     }
 }
