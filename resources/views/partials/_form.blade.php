@@ -1,6 +1,6 @@
 <form class=" w-full max-w-lg">
     <div class=" flex items-center pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
-        <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid--name">
+        <label class="w-64 flex flex-col items-center block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid--name">
             Stadium Name
         </label>
         <input
@@ -12,7 +12,7 @@
     </div>
 
     <div class="flex items-center pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
-        <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-capacity">
+        <label class="w-64 flex flex-col items-center block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-capacity">
             Stadium Capacity
         </label>
         <input
@@ -24,7 +24,7 @@
         @enderror
     </div>
     <div class="  pt-10 pb-12 w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
-        <label class="  block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-body">
+        <label class=" w-64 flex flex-col items-center block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-body">
             Stadium Information
         </label>
         <textarea
