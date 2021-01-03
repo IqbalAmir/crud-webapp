@@ -2,6 +2,21 @@
 
 @section('content')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <div class="container mx-auto px-6">
+        @if(session()->has('success_message'))
+            <div class="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+                {{ session()->get('success_message') }}
+            </div>
+        @endif
+        @if(count($errors)) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+            @endif
+        </div>
     <div>
         <header>
             <div class="relative mt-6 max-w-lg mx-auto">

@@ -6,17 +6,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('', [\App\Http\Controllers\StadiumController::class, 'index']);
 Route::get('/stadium', [\App\Http\Controllers\StadiumController::class, 'index'])->name('stadium.index');
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'show'])->name('contact');
+Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index'])->name('shop.index');
+Route::get('/searchproduct', [\App\Http\Controllers\ShopController::class, 'searchProduct']);
 
 Auth::routes();
 Route::get('/auth/github/redirect', [\App\Http\Controllers\Auth\GithubController::class, 'redirect'])->name('github.redirect');
 Route::get('/auth/github/callback', [\App\Http\Controllers\Auth\GithubController::class, 'callback'])->name('github.callback');
 
-
-
 Route::middleware('auth')->group(function () {
-
-    Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index'])->name('shop.index');
-    Route::get('/searchproduct', [\App\Http\Controllers\ShopController::class, 'searchProduct']);
 
     Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
     Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');

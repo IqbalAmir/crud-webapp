@@ -53,7 +53,7 @@
                                        class="text-red-500 hover:bg-gray-700 hover:text-purple-400 px-3 py-2 rounded-md text-lg font-medium ">{{ __('My Stadiums') }} </a>
                                     <a href="{{ route('cart.index') }}"
                                        class="fas fa-shopping-cart fa-1x text-red-500 hover:bg-gray-700 hover:text-purple-400 px-3 py-2 rounded-md text-xl font-medium "
-                                       onclick="{{route('cart.index')}}"></a>
+                                       onclick="{{route('cart.index')}}">{{\Cart::getContent()->count()}}</a>
                                     <a href="{{ route('logout') }}"
                                        class="fas fa-sign-out-alt fa-2x text-red-500 hover:bg-gray-700 hover:text-purple-400 px-3 py-2 rounded-md text-xl font-medium "
                                        onclick="event.preventDefault();

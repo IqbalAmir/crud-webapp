@@ -17,7 +17,7 @@ class CartController extends Controller
         \Cart::add($request->id, $request->name, 1, $request->price)
             ->associate('App\Models\Product');
 
-        return redirect()->route('cart.index')->with('success_message', 'Item was added to your cart');
+        return redirect()->route('shop.index')->with('success_message', 'Item was added to your cart');
     }
 
     public function destroy($id)
