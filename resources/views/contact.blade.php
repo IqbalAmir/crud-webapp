@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('success_message'))
+        <div class="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+            {{ session()->get('success_message') }}
+        </div>
+    @endif
     <div class="container mx-auto flex flex-col md:flex-row items-center my-6 md:my-12">
         <div id="page" class="container">
             <form method="POST" action="/contact" enctype="multipart/form-data">
@@ -17,6 +22,19 @@
 
                     @error('email')
                     <p class="text-red-500 text-lg italic">{{$errors->first('email')}}</p>
+                    @enderror
+                </div>
+
+                <div class=" flex items-center w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
+                    <label class=" w-64 flex flex-col items-center block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-body">
+                       Ask Query
+                    </label>
+                    <textarea
+                        class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white"
+                        type="text" id="query" name="textbox"></textarea>
+
+                    @error('body')
+                    <p class="text-red-500 text-lg italic">{{$errors->first('textbox')}}</p>
                     @enderror
                 </div>
                 <div class="flex items-center w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
@@ -42,11 +60,6 @@
                     type="submit">
                     Submit
                 </button>
-                @if (session('message'))
-                    <p class="text-green-500 text-small mt-2">
-                        {{session('message')}}
-                    </p>
-                @endif
             </form>
             <div id="googlemaps" class="w-1/4 px-8 py-10">
                 <iframe

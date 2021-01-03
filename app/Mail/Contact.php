@@ -11,6 +11,13 @@ class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $query;
+
+    public function __construct($query)
+    {
+        $this->query=$query;
+    }
+
     public function build()
     {
         return $this->markdown('emails.contact');

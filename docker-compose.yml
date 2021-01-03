@@ -5,7 +5,7 @@ services:
     image: bitnami/mariadb:latest
     container_name: StadiumTrackerDB
     volumes:
-      - .\docker\mysql\data:/bitnami/mariadb:delegated
+      - .\docker\mysql\data:/bitnami/mariadb:cached
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=test

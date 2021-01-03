@@ -25,6 +25,7 @@ class CheckoutController extends Controller
                 'metadata' => [
                 ],
             ]);
+            \Cart::clear();
             return back()->with('success_message', 'Thank you! Your payment has been accepted');
         } catch (CardErrorException  $error) {
             return back()->withErrors('Error ' . $error->getMessage());

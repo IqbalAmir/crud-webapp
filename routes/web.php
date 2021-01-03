@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('', [\App\Http\Controllers\StadiumController::class, 'index']);
 Route::get('/stadium', [\App\Http\Controllers\StadiumController::class, 'index'])->name('stadium.index');
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store']);
 Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index'])->name('shop.index');
 Route::get('/searchproduct', [\App\Http\Controllers\ShopController::class, 'searchProduct']);
 
@@ -22,10 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'store'])->name('checkout.store');
 
-    Route::get('empty', function(){
-        \Cart::clear();
-    });
-
     Route::post('/stadium', [\App\Http\Controllers\StadiumController::class, 'store']);
     Route::get('/stadium/create', [\App\Http\Controllers\StadiumController::class, 'create'])->name('stadium.create');
     Route::get('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'show'])->name('stadium.id');
@@ -33,10 +30,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/stadium/{stadium}/edit', [\App\Http\Controllers\StadiumController::class, 'edit'])->middleware('can:edit_form');
     Route::put('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'update']);
-
     Route::delete('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'destroy']);
 
     Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store']);
 
 });
