@@ -15,23 +15,22 @@ use Laravel\Socialite\Facades\Socialite;
 class GithubController extends Controller
 {
 
-    public function redirect(){
+    public function redirect()
+    {
 
         return Socialite::driver('github')->redirect();
     }
 
-    public function callback(){
+    public function callback()
+    {
         $user = Socialite::driver('github')->user();
-
         $user = User::firstOrCreate([
             'email' => $user->getEmail()
         ], [
             'name' => $user->getName(),
             'password' => Hash::make(Str::random(32)),
         ]);
-
         Auth::login($user);
         return redirect(route('stadium.index'));
-
-  }
+    }
 }

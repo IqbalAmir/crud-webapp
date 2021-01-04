@@ -29,13 +29,11 @@
                                 class="text-blue-500 hover:text-blue-700 no-underline hover:underline cursor-pointer"
                                 onclick="event.preventDefault(); document.getElementById('resend-verification-form').submit();">{{ __('click here to request another') }}</a>.
                         </p>
-
                         <form id="resend-verification-form" method="POST" action="{{ route('verification.resend') }}"
                               class="hidden">
                             @csrf
                         </form>
                     </div>
-
                 </section>
             </div>
         </div>

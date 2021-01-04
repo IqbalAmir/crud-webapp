@@ -11,20 +11,13 @@ class AuthServiceProvider extends ServiceProvider
 {
 
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
-
 
     public function boot()
     {
         $this->registerPolicies();
-
-//        Gate::define('my-stadium', function (User $user, Stadium $stadium){
-//            return $stadium -> user() -> is($user);
-
-        Gate::before(function ($user, $ability){
+        Gate::before(function ($user, $ability) {
             return $user->abilities()->contains($ability);
         });
-
     }
 }
