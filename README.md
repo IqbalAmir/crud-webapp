@@ -1,8 +1,8 @@
 # Stadium Tracker
 
 An app which allows users to write reviews about stadiums.
-App includes a personal section of a certain user's reviews when logged in.
-The App includes CRUD operations.
+App includes a personal section of the user's reviews when logged in.
+App includes CRUD operations.
 Built in E-commerce system for users to purchase items.
 
 
