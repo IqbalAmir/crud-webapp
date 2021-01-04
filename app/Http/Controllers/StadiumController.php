@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Stadium;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +21,6 @@ class StadiumController extends Controller
 
     public function store(Request $request)
     {
-
         $request->user()->stadiums()->create($this->validateStadium());
         return redirect(route('stadium.index'));
     }
@@ -49,7 +49,7 @@ class StadiumController extends Controller
     public function search()
     {
         $search_text = $_GET['query'];
-        $stadiums = Stadium::where('name','LIKE','%'.$search_text.'%')->get();
+        $stadiums = Stadium::where('name', 'LIKE', '%' . $search_text . '%')->get();
 
         return view('stadium.index', compact('stadiums'));
     }
