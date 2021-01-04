@@ -24,9 +24,9 @@ The following settings are required:
 
 ## Additional Libraries
 
-* Vanilla.JS (for the use of Dark Mode).
-* Font Awesome (for certain icons on the app).
-* Tailwindcss/ui (css framework used).
+* Vanilla.JS - for the use of Dark Mode (https://darkmodejs.learn.uno/).
+* Font Awesome - for certain icons on the app (https://github.com/FortAwesome/Font-Awesome).
+* Tailwindcss/ui - css framework (https://github.com/tailwindlabs/tailwindcss).
 * Gravatar (https://github.com/creativeorange/gravatar).
 * Socailite (https://github.com/laravel/socialite).
 * Shopping Cart (https://github.com/darryldecode/laravelshoppingcart).
