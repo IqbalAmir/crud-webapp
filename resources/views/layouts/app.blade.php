@@ -60,10 +60,15 @@
             </div>
     </ul>
 </nav>
-
 @yield('content')
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <script src='/js/script.js'></script>
+<footer class="bg-gray-200">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <a href="#" class="text-xl font-bold text-gray-500 hover:text-gray-400">Stadium Tracker</a>
+        <p class="py-2 text-gray-500 sm:py-0">All rights reserved</p>
+    </div>
+</footer>
 </html>
 
 

@@ -26,8 +26,10 @@
                 </div>
 
                 <div class=" flex items-center w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
-                    <label class=" w-64 flex flex-col items-center block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2" for="grid-body">
-                       Ask Query
+                    <label
+                        class=" w-64 flex flex-col items-center block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2"
+                        for="grid-body">
+                        Ask Query
                     </label>
                     <textarea
                         class="appearance-none block w-9/12 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white"
@@ -73,10 +75,4 @@
             </div>
         </div>
     </div>
-    <footer class="bg-gray-200">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-gray-500 hover:text-gray-400">Stadium Tracker</a>
-            <p class="py-2 text-gray-500 sm:py-0">All rights reserved</p>
-        </div>
-    </footer>
 @endsection

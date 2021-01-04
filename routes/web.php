@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'show'])->name('stadium.id');
     Route::get('/search', [\App\Http\Controllers\StadiumController::class, 'search']);
 
-    Route::get('/stadium/{stadium}/edit', [\App\Http\Controllers\StadiumController::class, 'edit'])->middleware('can:edit_form');
+    Route::get('/stadium/{stadium}/edit', [\App\Http\Controllers\StadiumController::class, 'edit']);
     Route::put('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'update']);
     Route::delete('/stadium/{stadium}', [\App\Http\Controllers\StadiumController::class, 'destroy']);
 

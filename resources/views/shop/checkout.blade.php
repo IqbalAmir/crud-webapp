@@ -35,7 +35,8 @@
                 </div>
                 <div class="mt-2">
                     <label class=" block text-sm text-gray-600" for="cus_address">Address</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_address" name="cus_address"
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_address"
+                           name="cus_address"
                            type="text" required="" placeholder="Street">
                 </div>
                 <div class="mt-2">
@@ -45,12 +46,14 @@
                 </div>
                 <div class="inline-block mt-2 w-1/2 pr-1">
                     <label class="hidden block text-sm text-gray-600" for="cus_country">Country</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_country" name="cus_country"
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_country"
+                           name="cus_country"
                            type="text" required="" placeholder="Country">
                 </div>
                 <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                     <label class="hidden block text-sm text-gray-600" for="cus_postcode">Post Code</label>
-                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_postcode" name="cus_postcode"
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_postcode"
+                           name="cus_postcode"
                            type="text" required="" placeholder="Post Code">
                 </div>
                 <p class="mt-4 text-gray-800 font-medium">Payment information</p>
@@ -96,12 +99,7 @@
             </div>
         </div>
     </div>
-    <footer class="bg-gray-200">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-gray-500 hover:text-gray-400">Stadium Tracker</a>
-            <p class="py-2 text-gray-500 sm:py-0">All rights reserved</p>
-        </div>
-    </footer>
+
     <script>
         (function () {
             var stripe = Stripe('pk_test_51I4szSG22eGQXUs0W3xPaXH63O4Z0s94t2MuXVnDpgltfKJHFgSEy4R3wmO62LpuQaSmyigaiSVLICZ2dSzZDJwa00C0ncU1TD');
